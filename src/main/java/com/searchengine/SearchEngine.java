@@ -2,12 +2,18 @@ package com.searchengine;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Scanner;
 
 public class SearchEngine {
 
     static Scanner scanner=new Scanner(System.in);
+    static ArrayList<String> key = new ArrayList<String>();
+	static Hashtable<String, Integer> numbers = new Hashtable<String, Integer>();
+	static int n = 1;
+	static int R;
+	static int[] right;
 
     public SearchEngine(){
         System.out.println("*****************************************************");
@@ -92,6 +98,7 @@ public class SearchEngine {
 					System.out.println();
 				});
 		System.out.println("-----------------------------------------------------------------------------");
+    }
 
 
     public static void main(String[] args) throws IOException {
