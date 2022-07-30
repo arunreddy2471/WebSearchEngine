@@ -1,4 +1,4 @@
-package com.searchengine.WebSearchEngine;
+package com.searchengine;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -95,7 +95,7 @@ public class SearchWord {
 
 		System.out.println("Did you mean? ");
 		int i=0;
-		for(Map.Entry entry: WebSearchEngine.numbers.entrySet()){
+		for(Map.Entry entry: SearchEngine.numbers.entrySet()){
 			if(allowedDistance == entry.getValue()) {
 				i++;
 				System.out.print("("+i+") "+entry.getKey()+"\n");		

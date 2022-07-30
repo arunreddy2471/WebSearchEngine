@@ -1,4 +1,4 @@
-package com.searchengine.WebSearchEngine;
+package com.searchengine;
 /**
  * webpages rank use merge sort for ranking.
 */
