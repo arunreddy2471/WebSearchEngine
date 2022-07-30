@@ -42,7 +42,7 @@ public class SearchWord {
 		
 		for (int loc = 0; loc <= txt.length(); loc += offset1a + word.length()) 
 		{
-			offset1a = WebSearchEngine.search1(word, txt.substring(loc)); 
+			offset1a = SearchEngine.search1(word, txt.substring(loc)); 
 			if ((offset1a + loc) < txt.length()) {
 				counter++;
 				System.out.println("\n"+word+ " at position " + (offset1a + loc));  //printing position of word
