@@ -76,7 +76,7 @@ public class SearchWord {
 		Matcher m3 = r3.matcher(line);
 		int fileNumber=0;
 		
-		File dir = new File(System.getProperty("user.dir")+ Constant.FILE_PATH);
+		File dir = new File(FileLocationValues.location());
 		File[] fileArray = dir.listFiles();
 		for(int i=0 ; i<fileArray.length ; i++)
 		{
