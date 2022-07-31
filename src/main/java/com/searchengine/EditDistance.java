@@ -1,3 +1,4 @@
+
 package com.searchengine;
 
 import java.io.BufferedReader;
@@ -5,86 +6,71 @@ import java.io.File;
 import java.io.FileReader;
 import java.util.regex.Matcher;
 
-/**
- * Uses Edit distance to compare nearest distance between keyword and similar patterns obtained from regex.
- **/
+
 public class EditDistance {
 
-	/**
-	 * Finds the edit distance between the words word1 and word2
-	 * @param word1
-	 * @param word2
-	 * @return
-	 */
-	public static int findEditDistance(String word1, String word2)
+	public static int findEditDistance(String s1, String s2)
 	{
-		int length1 = word1.length();
-		int length2 = word2.length();
-	 
-		// len1+1, len2+1, because finally return dp[len1][len2]
-		int[][] dp = new int[length1 + 1][length2 + 1];
- 
-		for (int i = 0; i <= length1; i++) {
-			dp[i][0] = i;
+		int l1 = s1.length();
+		int l2 = s2.length();
+
+		int[][] a = new int[l1+1][l2+1];
+
+		for (int i=0;i<=l1;i++) {
+			a[i][0] = i;
 		}
-	 
-		for (int j = 0; j <= length2; j++) {
-			dp[0][j] = j;
+
+		for (int j=0;j<=l2;j++) {
+			a[0][j] = j;
 		}
-	 
+
 		//iterate though, and check last char
-		for (int i = 0; i < length1; i++) {
-			char char1 = word1.charAt(i);
-			for (int j = 0; j < length2; j++) {
-				char char2 = word2.charAt(j);
-	 
+		for (int i = 0; i < l1; i++) {
+			char c1 = s1.charAt(i);
+			for (int j = 0; j < l2; j++) {
+				char c2 = s2.charAt(j);
+
 				//if last two chars equal
-				if (char1 == char2) {
-					//update dp value for +1 length
-					dp[i + 1][j + 1] = dp[i][j];
-				} else {
-					int replace = dp[i][j] + 1;
-					int insert = dp[i][j + 1] + 1;
-					int delete = dp[i + 1][j] + 1;
-	 
+				if (c1 == c2) {
+					//update a value for +1 length
+					a[i + 1][j + 1] = a[i][j];
+				} 
+				else {
+					int replace = a[i][j]+1;
+					int insert = a[i][j+1]+1;
+					int delete = a[i+1][j]+1;
+
 					int min = replace > insert ? insert : replace;
 					min = delete > min ? min : delete;
-					dp[i + 1][j + 1] = min;
+					a[i + 1][j + 1] = min;
 				}
 			}
 		}
-		return dp[length1][length2];		
+		return a[l1][l2];		
 	}
-	
-	/**
-	 * Find the given word in the file
-	 * @param sourceFile
-	 * @param fileNumber
-	 * @param matcher
-	 * @param p1
-	 */
-	public static void findWord(File sourceFile,int fileNumber,Matcher matcher,String p1)
+
+
+	public static void findWord(File source,int fileNumber,Matcher m,String s1)
 	{
 		try
     	{
-			BufferedReader reader = new BufferedReader(new FileReader(sourceFile));
-			String line = null;
-			
-			while ((line = reader.readLine()) != null){
-				matcher.reset(line);
-				while (matcher.find()) {
-					SearchEngine.key.add(matcher.group());
+			BufferedReader r = new BufferedReader(new FileReader(source));
+			String l=null;
+
+			while ((l = r.readLine()) != null){
+				m.reset(l);
+				while (m.find()) {
+					SearchEngine.key.add(m.group());
 				}
 			}
-			reader.close();
+			r.close();
 			for(int p = 0; p<SearchEngine.key.size(); p++){
-				SearchEngine.numbers.put(SearchEngine.key.get(p), findEditDistance(p1.toLowerCase(),SearchEngine.key.get(p).toLowerCase()));
+				SearchEngine.numbers.put(SearchEngine.key.get(p), findEditDistance(s1.toLowerCase(),SearchEngine.key.get(p).toLowerCase()));
 			}
     	}     
     	catch(Exception e)
-    	{
-    		e.printStackTrace();
-    	}
-    	
+		{
+			e.printStackTrace();
+		}
 	}
 }
