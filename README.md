@@ -10,4 +10,9 @@ Java Based Search Engine
 * Searching - BoyerMoore
 ## Flow Chart
 ![alt text](https://github.com/bharathvaitla111/WebSearchEngine/blob/master/Screenshot%202022-07-30%20at%2011.41.46%20PM.png)
+## Team Members
+* [Veera Venkata Bharat Kumar Vayitla](https://www.linkedin.com/in/bharat-kumar-vayitla/)
+* [Arun Reddy Nalla]()
+* [Kalyan Venkatesh Poludasu]()
+* [Siddhartha Pitchika]()
 
