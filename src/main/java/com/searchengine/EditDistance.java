@@ -24,25 +24,25 @@ public class EditDistance {
 			a[0][j] = j;
 		}
 
-		//iterate though, and check last char
+		//iterating and checking last char
 		for (int i = 0; i < l1; i++) {
 			char c1 = s1.charAt(i);
 			for (int j = 0; j < l2; j++) {
 				char c2 = s2.charAt(j);
 
-				//if last two chars equal
+				//check whether if last two char are equal
 				if (c1 == c2) {
-					//update a value for +1 length
+					//increment value of a by 1
 					a[i + 1][j + 1] = a[i][j];
 				} 
 				else {
-					int replace = a[i][j]+1;
-					int insert = a[i][j+1]+1;
-					int delete = a[i+1][j]+1;
+					int replaceWord = a[i][j]+1;
+					int insertWord = a[i][j+1]+1;
+					int deleteWord = a[i+1][j]+1;
 
-					int min = replace > insert ? insert : replace;
-					min = delete > min ? min : delete;
-					a[i + 1][j + 1] = min;
+					int MinValue = replaceWord > insertWord ? insertWord : replaceWord;
+					MinValue = deleteWord > MinValue ? MinValue : deleteWord;
+					a[i + 1][j + 1] = MinValue;
 				}
 			}
 		}
