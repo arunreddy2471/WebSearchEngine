@@ -42,7 +42,7 @@ public class SearchEngine {
 
 		do {
 			System.out.println("\n***************************************************");
-			System.out.println("\nENTER THE SEARCH WORD: ");
+			System.out.println("\nENTER THE WORD TO BE SEARCHED: ");
 			String p = scanner1.nextLine();
 			System.out.println("***************************************************");
 			long fileNumber = 0;
@@ -62,18 +62,18 @@ public class SearchEngine {
 
 				if (pg == 0) {
 					System.out.println("\n\n\n\n\n\n---------------------------------------------------");
-					System.out.println("Given word not found!!");
-					System.out.println("Searching for similar words.....");
+					System.out.println("Word Entered not found!");
+					System.out.println("Finding for similar words.....");
 					/* using regex to find similar strings to pattern */
 					SearchWord.altWord(p);
 				} 
 				else {
-					//Ranking of Web Pages using merge sort 
-					//Collections.sort by default uses merge sort
+					//Webpages Ranking using merge sort 
+					//merge sort is by collections.sort
 					SearchEngine.hashing(occurrs, pg);
 					Sorting.pageSort(occurrs,pg);
 				}	
-				System.out.println("\n\n Do you want to continue(y/n)??");
+				System.out.println("\n\n Do you want to Search another word(y/n)??");
 				choice = scanner1.nextLine();
 			} catch(Exception e) {
 				e.printStackTrace();
@@ -81,7 +81,7 @@ public class SearchEngine {
 		} while(choice.equals("y"));
 
 		System.out.println("\n***************************************************\n");
-		System.out.println("	:) THANK YOU FOR USING OUR SEARCH ENGINE :)        ");
+		System.out.println("	:) THANK YOUß :)        ");
 		System.out.println("\n***************************************************\n");
 
 

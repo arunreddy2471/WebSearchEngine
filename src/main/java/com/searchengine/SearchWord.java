@@ -37,9 +37,7 @@ public class SearchWord {
 		}
 		// Finding the position of the word...............
 		String txt = data;
-			
 		int offset1a = 0;
-		
 		for (int loc = 0; loc <= txt.length(); loc += offset1a + word.length()) 
 		{
 			offset1a = SearchEngine.search1(word, txt.substring(loc)); 

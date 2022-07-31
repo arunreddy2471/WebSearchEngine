@@ -30,7 +30,6 @@ public class WebCrawler {
         Elements pageLinks= document.select("a[href]");
         String url;
         long duplicateURL=0, notMatch=0;
-
         for(Element currentPage : pageLinks)
         {
             url = currentPage.attr("abs:href");
@@ -45,12 +44,10 @@ public class WebCrawler {
                 System.out.println(url+ " | URL does not matched the pattern requirement");
                 notMatch++;
             }
-            else
-            {
+            else{
                 linksCrawled.add(currentPage.attr("abs:href"));
                 System.out.println(url+ " | URL will be crawled");
-
-            }
+                }
         }
         System.out.println("Duplicate URL's count : "+duplicateURL);
         System.out.println("irrelevant URL's count : "+notMatch);
