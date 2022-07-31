@@ -43,35 +43,35 @@ public class SearchEngine {
 		do {
 			System.out.println("\n***************************************************");
 			System.out.println("\nENTER THE WORD TO BE SEARCHED: ");
-			String p = scanner1.nextLine();
+			String word = scanner1.nextLine();
 			System.out.println("***************************************************");
-			long fileNumber = 0;
+			long fileNum = 0;
 			int occur = 0;
-			int pg = 0;
+			int pgCount = 0;
 
 			try {
 				File[] fileArray = file.listFiles();
 				for (int i = 0; i < fileArray.length; i++) {
 					// Searching the word given as an input.
-					occur = SearchWord.wordSearch(fileArray[i], p);
+					occur = SearchWord.wordSearch(fileArray[i], word);
 					occurrs.put(fileArray[i].getName(), occur);
 					if (occur != 0)
-						pg++;
-					fileNumber++;
+						pgCount++;
+					fileNum++;
 				}
 
-				if (pg == 0) {
+				if (pgCount == 0) {
 					System.out.println("\n\n\n\n\n\n---------------------------------------------------");
 					System.out.println("Word Entered not found!");
 					System.out.println("Finding for similar words.....");
 					/* using regex to find similar strings to pattern */
-					SearchWord.altWord(p);
+					SearchWord.altWord(word);
 				} 
 				else {
 					//Webpages Ranking using merge sort 
 					//merge sort is by collections.sort
-					SearchEngine.hashing(occurrs, pg);
-					Sorting.pageSort(occurrs,pg);
+					SearchEngine.hashing(occurrs, pgCount);
+					Sorting.pageSort(occurrs,pgCount);
 				}	
 				System.out.println("\n\n Do you want to Search another word(y/n)??");
 				choice = scanner1.nextLine();
